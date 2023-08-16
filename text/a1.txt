@@ -1,0 +1,20 @@
+import React, { useState, useEffect } from 'react'
+
+export function Q1() {
+  const [time, setTime] = useState(new Date())
+
+  useEffect(() => {
+    const interval = setInterval(() => {
+      setTime(new Date())
+    }, 1000)
+
+    return () => clearInterval(interval)
+  }, [])
+
+  return <p>The current time is: {time.toLocaleTimeString()}</p>
+}
+
+In this example, the useEffect() hook is used to set up an interval that will call the setTime() function every 1000 milliseconds (or 1 second). This will cause the component to re-render with the current time whenever the setTime() function is called.
+
+It's important to note that the useEffect() hook also includes a cleanup function that will be called when the component unmounts. This cleanup function is used to clear the interval so that it doesn't continue to run even after the component is no longer being rendered.
+
